@@ -1,4 +1,4 @@
-package tetirs;
+package tetris;
 
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
@@ -6,6 +6,7 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
 public class Tetris extends JFrame {
+	private static final long serialVersionUID = 1L;
 
 	public Tetris() throws HeadlessException {
 		// TODO Auto-generated constructor stub
