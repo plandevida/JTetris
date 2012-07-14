@@ -9,7 +9,7 @@ public class Tetris extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public Tetris() throws HeadlessException {
-		// TODO Auto-generated constructor stub
+		super("JTetris");
 	}
 
 	public Tetris(GraphicsConfiguration gc) {
@@ -18,11 +18,9 @@ public class Tetris extends JFrame {
 
 	public Tetris(String title) throws HeadlessException {
 		super(title);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Tetris(String title, GraphicsConfiguration gc) {
 		super(title, gc);
-		// TODO Auto-generated constructor stub
 	}
 }
