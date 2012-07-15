@@ -4,16 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import tetris.paneles.DataPanel;
 import tetris.paneles.TetrisPanel;
 
 public class Tetris extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JSplitPane splitPane;
-	private JPanel panelRoot;
 	private TetrisPanel panelTetris;
 	
 	public Tetris() throws HeadlessException {
@@ -36,8 +35,7 @@ public class Tetris extends JFrame {
 		panelTetris = new TetrisPanel(this);		
 		splitPane.setLeftComponent(panelTetris);
 		
-		JPanel panelData = new JPanel(new BorderLayout(4, 4));
-		panelData.setBounds(0, 0, getWidth()/2, getHeight());
+		DataPanel panelData = new DataPanel(new BorderLayout(4, 4));
 		
 		splitPane.setRightComponent(panelData);
 		
@@ -45,9 +43,5 @@ public class Tetris extends JFrame {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(Boolean.TRUE);
-	}
-	
-	public JPanel getPanelRoot() {
-		return panelRoot;
 	}
 }
