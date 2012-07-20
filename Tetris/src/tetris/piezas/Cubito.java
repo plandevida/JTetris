@@ -3,7 +3,9 @@ package tetris.piezas;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Cubito implements Pieza {
+import tetris.piezas.interfaces.Dibujable;
+
+public class Cubito extends Pieza implements Dibujable {
 	final int posX, posY, ancho = 10, alto = 10;
 	Color color = Color.BLUE;
 	

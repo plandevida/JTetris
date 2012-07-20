@@ -21,7 +21,7 @@ public class DataPanel extends JPanel {
 	private void initUI() {
 //		setBounds(0, 0, getWidth()/2, getHeight());
 		JPanel data = new JPanel();
-		data.add(new JLabel("scores"));
+		data.add(new JLabel("Data"));
 		add(data, BorderLayout.NORTH);
 	}
 }
