@@ -2,6 +2,12 @@ package tetris;
 
 import tetris.ventana.Tetris;
 
+/**
+ * 
+ * 
+ * @author Plandevida
+ *
+ */
 public class Main {
 
 	/**
