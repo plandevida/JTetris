@@ -9,6 +9,11 @@ import javax.swing.JSplitPane;
 import tetris.paneles.DataPanel;
 import tetris.paneles.TetrisPanel;
 
+/**
+ * 
+ * @author Plandevida
+ *
+ */
 public class Tetris extends JFrame {
 	private static final long serialVersionUID = 1L;
 
