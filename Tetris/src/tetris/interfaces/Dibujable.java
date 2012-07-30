@@ -1,4 +1,4 @@
-package tetris.piezas.interfaces;
+package tetris.interfaces;
 
 import java.awt.Graphics;
 

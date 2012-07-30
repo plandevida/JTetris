@@ -6,6 +6,11 @@ import java.awt.LayoutManager;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Plandevida
+ *
+ */
 public class DataPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -19,7 +24,6 @@ public class DataPanel extends JPanel {
 	}
 	
 	private void initUI() {
-//		setBounds(0, 0, getWidth()/2, getHeight());
 		JPanel data = new JPanel();
 		data.add(new JLabel("Data"));
 		add(data, BorderLayout.NORTH);

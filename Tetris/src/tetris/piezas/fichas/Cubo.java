@@ -1,26 +1,34 @@
 package tetris.piezas.fichas;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 import tetris.piezas.Cubito;
 import tetris.piezas.Pieza;
-import tetris.piezas.interfaces.Dibujable;
 
-public class Cubo extends Pieza implements Dibujable {
+public class Cubo extends Pieza {
 
-	@Override
-	public void pinta(Graphics g) {
+	private Color color = Color.black;
+	
+	public Cubo() {
+		x = 24;
+		y = 24;
+		
 		/** Este array representa un esquema de pieza:
-		 *		| 1, 1, 0, 0 |
-		 *		| 1, 1, 0, 0 |
-		 *		| 0, 0, 0, 0 |
-		 *		| 0, 0, 0, 0 |
+		 *		| 1, 1, 0 |
+		 *		| 1, 1, 0 |
+		 *		| 0, 0, 0 |
+		 *		| 0, 0, 0 |
 		 *	donde los unos significa que ahí se pintará un cubito @see Cubito.java
 		**/
-		forma = new Cubito[][] {{new Cubito(0, 0, Color.blue), new Cubito(0,1,Color.blue), null},
-								{new Cubito(0, 0, Color.blue), new Cubito(0,1,Color.blue), null},
-								{null, null, null},
-								{null, null, null}};
+		
+		// la posición en la que se va a pintar el cubo: x = columna, y = fila
+		// forma[0][0] = new Cubito(x+0*10, y+0*10, color);
+		//                             ^       ^
+		//                         x=columna  y=fila (multiplicados por el ancho del cubito)
+		
+		forma[0][0] = new Cubito(x+0*lado, y+0*lado, color); forma[0][1] = new Cubito(x+1*lado, y+0*lado, color); forma[0][2] = null;
+		forma[1][0] = new Cubito(x+0*lado, y+1*lado, color); forma[1][1] = new Cubito(x+1*lado, y+1*lado, color); forma[1][2] = null;
+		forma[2][0] = null; forma[2][1] = null; forma[2][2] = null;
+		forma[3][0] = null; forma[3][1] = null; forma[3][2] = null;
 	}
 }

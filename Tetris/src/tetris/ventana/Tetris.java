@@ -19,6 +19,9 @@ public class Tetris extends JFrame {
 
 	private JSplitPane splitPane;
 	private TetrisPanel panelTetris;
+	private DataPanel panelData;
+	
+	private boolean start = false;
 	
 	public Tetris() throws HeadlessException {
 		super("JTetris");
@@ -37,10 +40,10 @@ public class Tetris extends JFrame {
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setDividerSize(5);
 		
-		panelTetris = new TetrisPanel(this);		
+		panelTetris = new TetrisPanel(this);	
 		splitPane.setLeftComponent(panelTetris);
 		
-		DataPanel panelData = new DataPanel(new BorderLayout(4, 4));
+		panelData = new DataPanel(new BorderLayout(4, 4));
 		
 		splitPane.setRightComponent(panelData);
 		
@@ -48,5 +51,11 @@ public class Tetris extends JFrame {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(Boolean.TRUE);
+	}
+	
+	public void initGame() {
+		while(true) {
+			panelTetris.repaint();
+		}
 	}
 }
