@@ -2,8 +2,10 @@ package tetris.piezas;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 import tetris.interfaces.Dibujable;
+import utilidades.ColorsEnum;
 
 /**
  * Interfaz que provee una matriz para pintar
@@ -16,12 +18,16 @@ public abstract class Pieza implements Dibujable{
 	protected final int filas = 4, columnas = 3;
 	protected final int lado = 12;
 	protected int x, y;
-	protected Color color = Color.BLUE;
+	
+	Random random = new Random();
+	int colorIndex = random.nextInt(ColorsEnum.values().length);
+	protected Color color = ColorsEnum.getColorIndex(colorIndex);
 	
 	protected Cubito forma[][] = new Cubito[filas][columnas];
 	
 	@Override
 	public void pinta(Graphics g) {
+		g.setColor(color);
 		for (int i=0; i<this.filas; i++) {
 			for (int j=0; j<this.columnas; j++) {
 				if (forma[i][j] != null) {
@@ -40,5 +46,13 @@ public abstract class Pieza implements Dibujable{
 	public void desplazaRelativamente(int offsetX, int offsetY) {
 		x += offsetX;
 		y += offsetY;
+	}
+	
+	public int getPosX() {
+		return x;
+	}
+	
+	public int getPosY() {
+		return y;
 	}
 }

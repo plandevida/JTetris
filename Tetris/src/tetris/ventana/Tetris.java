@@ -21,7 +21,7 @@ public class Tetris extends JFrame {
 	private TetrisPanel panelTetris;
 	private DataPanel panelData;
 	
-	private boolean start = false;
+	private boolean running = true;
 	
 	public Tetris() throws HeadlessException {
 		super("JTetris");
@@ -54,7 +54,7 @@ public class Tetris extends JFrame {
 	}
 	
 	public void initGame() {
-		while(true) {
+		while(running) {
 			panelTetris.repaint();
 		}
 	}
