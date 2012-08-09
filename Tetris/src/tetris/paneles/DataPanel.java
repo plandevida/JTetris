@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 public class DataPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	private JLabel score = new JLabel("Pos: ");
+	
 	public DataPanel(LayoutManager layout) {
 		setLayout(layout);
 		initUI();
@@ -25,7 +27,11 @@ public class DataPanel extends JPanel {
 	
 	private void initUI() {
 		JPanel data = new JPanel();
-		data.add(new JLabel("Data"));
+		data.add(score);
 		add(data, BorderLayout.NORTH);
+	}
+	
+	public JLabel getScore() {
+		return score;
 	}
 }

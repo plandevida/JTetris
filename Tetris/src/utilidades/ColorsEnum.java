@@ -3,7 +3,6 @@ package utilidades;
 import java.awt.Color;
 
 public enum ColorsEnum {
-	WHITE(Color.WHITE),
 	BLACK(Color.BLACK),
 	BLUE(Color.BLUE),
 	RED(Color.RED),

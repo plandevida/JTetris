@@ -2,6 +2,7 @@ package tetris.paneles;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -11,7 +12,7 @@ import tetris.piezas.fichas.Cubo;
 import tetris.piezas.fichas.EleDrch;
 import tetris.piezas.fichas.EleIzq;
 import tetris.piezas.fichas.Escalon;
-import tetris.ventana.Tetris;
+import tetris.ventana.TetrisWindow;
 
 /**
  * 
@@ -21,19 +22,14 @@ import tetris.ventana.Tetris;
 public class TetrisPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	Pieza p;
-	private Tetris ventana;
+	private TetrisWindow ventana;
+	private DataPanel data;
 	
-	public TetrisPanel(Tetris ventana) {
+	public TetrisPanel(TetrisWindow ventana) {
 		initUI(ventana);
 	}
 	
-	public TetrisPanel(Pieza p, Tetris ventana) {
-		this.p = p;
-		initUI(ventana);
-	}
-	
-	private void initUI(Tetris ventana) {
+	private void initUI(TetrisWindow ventana) {
 		this.ventana = ventana;
 		setLayout(null);
 		setPreferredSize(new Dimension(this.ventana.getWidth()/2, this.ventana.getHeight()/2));
@@ -48,28 +44,43 @@ public class TetrisPanel extends JPanel {
 //		setBackground(Color.BLUE);
 //	}
 	
+	Pieza pieza = new Cubo();
+	
 	@Override
 	public void paintComponent(Graphics g) {
 //		background(g);
 		
-		pieza = new Cubo();
 		pieza.pinta(g);
-		System.out.println(pieza.getPosY());
-		pieza.desplazaRelativamente(0, 12);
-		System.out.println(pieza.getPosY());
-		pieza = new Barra();
-		pieza.pinta(g);
-		pieza = new EleDrch();
-		pieza.pinta(g);
-		pieza = new EleIzq();
-		pieza.pinta(g);
-		pieza = new Escalon();
-		pieza.pinta(g);
+		
+		if (ventana.getDataPanel() != null && data == null) {
+			data = ventana.getDataPanel();
+		}
+		
+		update();
 	}
 	
-	Pieza pieza;
+	public void update() {
+		if (pieza.getPosY() < ventana.getHeight()) {
+//			Random random = new Random();
+//			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].p;
+//			pieza.desplaza(pieza.getPosX(), 12);
+//		} else {
+			pieza.desplazaRelativamente(0, 12);
+		}
+	}
 	
-	public Pieza getPieza() {
-		return pieza;
+	private enum Piezas {
+		BARRA(new Barra()),
+		CUBO(new Cubo()),
+		ELED(new EleDrch()),
+		ELEI(new EleIzq()),
+		ESCALON(new Escalon())
+		;
+		
+		Pieza p;
+		
+		Piezas(Pieza p) {
+			this.p = p;
+		}
 	}
 }

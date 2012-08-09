@@ -10,13 +10,16 @@ import java.awt.Graphics;
  * @author Plandevida
  *
  */
-public class Cubito extends Pieza {
-	final int posX, posY;
+public class Cubito extends PiezaPrimitiva {
+	int posX, posY;
+	Color color;
+	Pieza pieza;
 	
-	public Cubito(Integer x, Integer y, Color color) {
+	public Cubito(Integer x, Integer y, Color color, Pieza p) {
 		this.color = color;
-		posX = x;
-		posY = y;
+		this.posX = x;
+		this.posY = y;
+		this.pieza = p;
 	}
 
 	@Override

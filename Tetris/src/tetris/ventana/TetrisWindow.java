@@ -14,28 +14,26 @@ import tetris.paneles.TetrisPanel;
  * @author Plandevida
  *
  */
-public class Tetris extends JFrame {
+public class TetrisWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JSplitPane splitPane;
 	private TetrisPanel panelTetris;
 	private DataPanel panelData;
 	
-	private boolean running = true;
-	
-	public Tetris() throws HeadlessException {
+	public TetrisWindow() throws HeadlessException {
 		super("JTetris");
 		initUI();
 	}
 
-	public Tetris(String title) throws HeadlessException {
+	public TetrisWindow(String title) throws HeadlessException {
 		super(title);
 		initUI();
 	}
 	
 	private void initUI() {
 		this.setBounds(200, 200, 600, 600);
-		this.setResizable(false);
+		this.setResizable(Boolean.FALSE);
 		
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setDividerSize(5);
@@ -50,12 +48,15 @@ public class Tetris extends JFrame {
 		setContentPane(splitPane);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setAlwaysOnTop(Boolean.TRUE);
 		this.setVisible(Boolean.TRUE);
 	}
 	
-	public void initGame() {
-		while(running) {
-			panelTetris.repaint();
-		}
+	public TetrisPanel getTetrisPanel() {
+		return panelTetris;
+	}
+	
+	public DataPanel getDataPanel() {
+		return panelData;
 	}
 }

@@ -13,6 +13,12 @@ public class Cubo extends Pieza {
 		x = 32;
 		y = 12;
 		
+		crearForma();
+	}
+	
+	@Override
+	protected void crearForma() {
+		
 		/** Este array representa un esquema de pieza:
 		 *		| 1, 1, 0 |
 		 *		| 1, 1, 0 |
@@ -26,9 +32,9 @@ public class Cubo extends Pieza {
 		//                             ^       ^
 		//                         x=columna  y=fila (multiplicados por el ancho del cubito)
 		
-		forma[0][0] = new Cubito(x+0*lado, y+0*lado, color); 	forma[0][1] = new Cubito(x+1*lado, y+0*lado, color); 	forma[0][2] = null;
-		forma[1][0] = new Cubito(x+0*lado, y+1*lado, color); 	forma[1][1] = new Cubito(x+1*lado, y+1*lado, color); 	forma[1][2] = null;
-		forma[2][0] = null; 									forma[2][1] = null; 									forma[2][2] = null;
-		forma[3][0] = null; 									forma[3][1] = null; 									forma[3][2] = null;
+		forma[0][0] = new Cubito(x+0*lado, y+0*lado, color, this); 	forma[0][1] = new Cubito(x+1*lado, y+0*lado, color, this); 	forma[0][2] = null;
+		forma[1][0] = new Cubito(x+0*lado, y+1*lado, color, this); 	forma[1][1] = new Cubito(x+1*lado, y+1*lado, color, this); 	forma[1][2] = null;
+		forma[2][0] = null; 										forma[2][1] = null; 										forma[2][2] = null;
+		forma[3][0] = null; 										forma[3][1] = null; 										forma[3][2] = null;
 	}
 }
