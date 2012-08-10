@@ -3,10 +3,10 @@ package tetris.piezas.fichas;
 import tetris.piezas.Cubito;
 import tetris.piezas.Pieza;
 
-public class Escalon extends Pieza {
+public class EscalonD extends Pieza {
 
-	public Escalon() {
-		x = 136;
+	public EscalonD() {
+		x = 144;
 		y = 12;
 		
 		crearForma();
@@ -25,7 +25,7 @@ public class Escalon extends Pieza {
 		// la posición en la que se va a pintar el cubo: x = columna, y = fila
 		// forma[0][0] = new Cubito(x+0*10, y+0*10, color);
 		//                             ^       ^
-		//                         x=columna  y=fila (multiplicados por el ancho del cubito)
+		//                         x=columna  y=fila (multiplicados por el ancho del cubito)[1][1] = new Cubito(x+1*lado, y+1*lado, color, this); 	forma[1][2] = new Cubito(x+2*lado, y+1*lado, color, this);
 		
 		forma[0][0] = new Cubito(x+0*lado, y+0*lado, color, this); 	forma[0][1] = new Cubito(x+1*lado, y+0*lado, color, this); 	forma[0][2] = null;
 		forma[1][0] = null; 										forma[1][1] = new Cubito(x+1*lado, y+1*lado, color, this); 	forma[1][2] = new Cubito(x+2*lado, y+1*lado, color, this);

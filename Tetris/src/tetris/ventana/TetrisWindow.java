@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
 import tetris.paneles.DataPanel;
+import tetris.paneles.TetrisLienzo;
 import tetris.paneles.TetrisPanel;
 
 /**
@@ -20,6 +21,7 @@ public class TetrisWindow extends JFrame {
 	private JSplitPane splitPane;
 	private TetrisPanel panelTetris;
 	private DataPanel panelData;
+	private TetrisLienzo lienzo;
 	
 	public TetrisWindow() throws HeadlessException {
 		super("JTetris");
@@ -38,8 +40,12 @@ public class TetrisWindow extends JFrame {
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setDividerSize(5);
 		
-		panelTetris = new TetrisPanel(this);	
-		splitPane.setLeftComponent(panelTetris);
+//		panelTetris = new TetrisPanel(this);	
+//		splitPane.setLeftComponent(panelTetris);
+		
+		lienzo = new TetrisLienzo(this);
+		
+		splitPane.setLeftComponent(lienzo);
 		
 		panelData = new DataPanel(new BorderLayout(4, 4));
 		
@@ -54,6 +60,10 @@ public class TetrisWindow extends JFrame {
 	
 	public TetrisPanel getTetrisPanel() {
 		return panelTetris;
+	}
+	
+	public TetrisLienzo getTetrisLienzo() {
+		return lienzo;
 	}
 	
 	public DataPanel getDataPanel() {

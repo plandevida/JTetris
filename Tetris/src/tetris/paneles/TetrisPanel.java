@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 import tetris.piezas.Pieza;
 import tetris.piezas.fichas.Barra;
 import tetris.piezas.fichas.Cubo;
-import tetris.piezas.fichas.EleDrch;
-import tetris.piezas.fichas.EleIzq;
-import tetris.piezas.fichas.Escalon;
+import tetris.piezas.fichas.EleD;
+import tetris.piezas.fichas.EleI;
+import tetris.piezas.fichas.EscalonD;
 import tetris.ventana.TetrisWindow;
 
 /**
@@ -34,6 +34,7 @@ public class TetrisPanel extends JPanel {
 		setLayout(null);
 		setPreferredSize(new Dimension(this.ventana.getWidth()/2, this.ventana.getHeight()/2));
 		setDoubleBuffered(true);
+		setIgnoreRepaint(true);
 	}
 	
 //	private void background(Graphics g) {
@@ -60,11 +61,11 @@ public class TetrisPanel extends JPanel {
 	}
 	
 	public void update() {
-		if (pieza.getPosY() < ventana.getHeight()) {
-//			Random random = new Random();
-//			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].p;
-//			pieza.desplaza(pieza.getPosX(), 12);
-//		} else {
+		if (pieza.getPosY() >= ventana.getHeight()) {
+			Random random = new Random();
+			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].p;
+			pieza.desplaza(pieza.getPosX(), 12);
+		} else {
 			pieza.desplazaRelativamente(0, 12);
 		}
 	}
@@ -72,9 +73,9 @@ public class TetrisPanel extends JPanel {
 	private enum Piezas {
 		BARRA(new Barra()),
 		CUBO(new Cubo()),
-		ELED(new EleDrch()),
-		ELEI(new EleIzq()),
-		ESCALON(new Escalon())
+		ELED(new EleD()),
+		ELEI(new EleI()),
+		ESCALON(new EscalonD())
 		;
 		
 		Pieza p;

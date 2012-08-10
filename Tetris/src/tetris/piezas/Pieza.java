@@ -36,14 +36,14 @@ public abstract class Pieza extends PiezaPrimitiva{
 		for (int i=0; i<this.filas; i++) {
 			for (int j=0; j<this.columnas; j++) {
 				if (forma[i][j] != null) {
-					System.out.println("In position: i = " + i + ", j = " + j);
+//					System.out.println("In position: i = " + i + ", j = " + j);
 					if (relative) {
-						System.out.println("|___ Old x = " + forma[i][j].posX);
+//						System.out.println("|___ Old x = " + forma[i][j].posX);
 						forma[i][j].posX += offsetX;
-						System.out.println("|___ New x = " + forma[i][j].posX);
-						System.out.println("|___ Old y = " + forma[i][j].posY);
+//						System.out.println("|___ New x = " + forma[i][j].posX);
+//						System.out.println("|___ Old y = " + forma[i][j].posY);
 						forma[i][j].posY += offsetY;
-						System.out.println("|___ Old y = " + forma[i][j].posY);
+//						System.out.println("|___ Old y = " + forma[i][j].posY);
 					} else {
 						forma[i][j].posX = offsetX + i * lado;
 						forma[i][j].posY = offsetY + j * lado;
@@ -55,9 +55,13 @@ public abstract class Pieza extends PiezaPrimitiva{
 	
 	@Override
 	public void pinta(Graphics g) {
+		
+		// Ajusta el color de la pieza
 		g.setColor(color);
-		for (int i=0; i<this.filas; i++) {
-			for (int j=0; j<this.columnas; j++) {
+		
+		// Recore el array que forma la pieza y pinta los cubitos (@see Cubito) que la componen
+		for (int i=0; i < this.filas; i++) {
+			for (int j=0; j < this.columnas; j++) {
 				if (forma[i][j] != null) {
 					forma[i][j].pinta(g);
 				}

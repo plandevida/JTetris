@@ -9,10 +9,13 @@ public class Tetris implements Runnable {
 	private long desiredDeltaLoop = (1000 * 1000 * 1000) / desiredFPS;
 
 	private TetrisWindow tetris;
+	
+	public Tetris() {
+		tetris = new TetrisWindow();
+	}
 
 	@Override
 	public void run() {
-		tetris = new TetrisWindow();
 		
 		long beginLoopTime;
 		long endLoopTime;
@@ -26,7 +29,9 @@ public class Tetris implements Runnable {
 			lastUpdateTime = currentUpdateTime;
 			currentUpdateTime = System.nanoTime();
 
-			tetris.getTetrisPanel().repaint((currentUpdateTime - lastUpdateTime) / (1000 * 1000));
+//			tetris.getTetrisPanel().repaint((currentUpdateTime - lastUpdateTime) / (1000 * 1000));
+//			tetris.getTetrisPanel().repaint();
+			tetris.getTetrisLienzo().repaint( (currentUpdateTime - lastUpdateTime) / (1000 * 1000));
 
 			endLoopTime = System.nanoTime();
 			deltaLoop = endLoopTime - beginLoopTime;
@@ -35,7 +40,7 @@ public class Tetris implements Runnable {
 				try {
 					Thread.sleep((desiredDeltaLoop - deltaLoop) / (1000 * 1000));
 				} catch (InterruptedException e) {
-					// Do nothing
+					System.out.println("Estamos dentros del tiempo de refresco");
 				}
 			}
 		}
