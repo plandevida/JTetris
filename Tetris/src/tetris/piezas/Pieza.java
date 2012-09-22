@@ -59,7 +59,9 @@ public abstract class Pieza extends PiezaPrimitiva{
 		// Ajusta el color de la pieza
 		g.setColor(color);
 		
-		// Recore el array que forma la pieza y pinta los cubitos (@see Cubito) que la componen
+		/**
+		 * Recorre el array que forma la pieza y pinta los cubitos ( @see Cubito.java ) que la componen
+		 */
 		for (int i=0; i < this.filas; i++) {
 			for (int j=0; j < this.columnas; j++) {
 				if (forma[i][j] != null) {
@@ -72,13 +74,13 @@ public abstract class Pieza extends PiezaPrimitiva{
 	public void desplaza(int newX, int newY) {
 		x = newX;
 		y = newY;
-		populatePosition(newX, newY, false);
+//		populatePosition(newX, newY, false);
 	}
 	
 	public void desplazaRelativamente(int offsetX, int offsetY) {
 		x += offsetX;
 		y += offsetY;
-		populatePosition(offsetX, offsetY, true);
+//		populatePosition(offsetX, offsetY, true);
 	}
 	
 	public int getPosX() {

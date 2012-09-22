@@ -17,21 +17,31 @@ public class Tetris implements Runnable {
 	@Override
 	public void run() {
 		
-		long beginLoopTime;
-		long endLoopTime;
-		long currentUpdateTime = System.nanoTime();
-		long lastUpdateTime;
-		long deltaLoop;
+		Long beginLoopTime = null;
+		Long endLoopTime = null;
+		Long currentUpdateTime = System.nanoTime();
+		Long lastUpdateTime = null;
+		Long deltaLoop = null;
 
 		while (running) {
+			
+//			if (deltaLoop != null) {
+//				System.out.println((desiredDeltaLoop - deltaLoop) / (1000 * 10));
+//				tetris.getTetrisLienzo().repaint((desiredDeltaLoop - deltaLoop) / (1000 * 10));
+//				tetris.getTetrisLienzo().update((int) ((desiredDeltaLoop - deltaLoop) / (1000 * 10)) );
+//			} else {
+//				tetris.getTetrisLienzo().repaint();
+//			}
 
 			beginLoopTime = System.nanoTime();
 			lastUpdateTime = currentUpdateTime;
 			currentUpdateTime = System.nanoTime();
-
-//			tetris.getTetrisPanel().repaint((currentUpdateTime - lastUpdateTime) / (1000 * 1000));
-//			tetris.getTetrisPanel().repaint();
-			tetris.getTetrisLienzo().repaint( (currentUpdateTime - lastUpdateTime) / (1000 * 1000));
+			
+			endLoopTime = System.nanoTime();
+			deltaLoop = endLoopTime - beginLoopTime;
+			
+			tetris.getTetrisLienzo().repaint();
+			tetris.getTetrisLienzo().update((int)(currentUpdateTime - lastUpdateTime) / (1000 * 1000));
 
 			endLoopTime = System.nanoTime();
 			deltaLoop = endLoopTime - beginLoopTime;

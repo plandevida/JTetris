@@ -11,6 +11,11 @@ import java.awt.Graphics;
  *
  */
 public class Cubito extends PiezaPrimitiva {
+	/*
+	 * Estas posiciones son relativas a las coordenadas de la pieza a la que pertenece el cubito
+	 * para posicionar el cubito correctamente debe pintarse con la suma de las coordenadar de la
+	 * pieza y su posición relativa a ella (posX, posY)
+	 */
 	int posX, posY;
 	Color color;
 	Pieza pieza;
@@ -24,6 +29,6 @@ public class Cubito extends PiezaPrimitiva {
 
 	@Override
 	public void pinta(Graphics g) {
-		g.fillRect(posX, posY, lado, lado);
+		g.fillRect(posX + pieza.x, posY + pieza.y, lado, lado);
 	}
 }
