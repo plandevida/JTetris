@@ -27,9 +27,9 @@ public class Barra extends Pieza {
 		//                             ^       ^
 		//                         x=columna  y=fila (multiplicados por el ancho del cubito)
 		
-		forma[0][0] = new Cubito(x+0*lado, y+0*lado, color, this); 	forma[0][1] = null;		forma[0][2] = null;
-		forma[1][0] = new Cubito(x+0*lado, y+1*lado, color, this); 	forma[1][1] = null;		forma[1][2] = null;
-		forma[2][0] = new Cubito(x+0*lado, y+2*lado, color, this); 	forma[2][1] = null;		forma[2][2] = null;
-		forma[3][0] = new Cubito(x+0*lado, y+3*lado, color, this); 	forma[3][1] = null;		forma[3][2] = null;
+		forma[0][0] = new Cubito(0*lado, 0*lado, color, this); 	forma[0][1] = null;		forma[0][2] = null;
+		forma[1][0] = new Cubito(0*lado, 1*lado, color, this); 	forma[1][1] = null;		forma[1][2] = null;
+		forma[2][0] = new Cubito(0*lado, 2*lado, color, this); 	forma[2][1] = null;		forma[2][2] = null;
+		forma[3][0] = new Cubito(0*lado, 3*lado, color, this); 	forma[3][1] = null;		forma[3][2] = null;
 	}
 }

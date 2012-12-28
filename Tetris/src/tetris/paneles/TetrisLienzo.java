@@ -52,16 +52,18 @@ private static final long serialVersionUID = 1L;
 			data = ventana.getDataPanel();
 		}
 		
-		update();
+//		update();
 	}
 	
-	public void update() {
+	public void update(int deltaTime) {
 		if (pieza.getPosY() < ventana.getHeight()) {
 //			Random random = new Random();
 //			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].p;
 //			pieza.desplaza(pieza.getPosX(), 12);
 //		} else {
-			pieza.desplazaRelativamente(0, 12);
+			System.out.println(deltaTime);
+			System.out.println(deltaTime * 0.25);
+			pieza.desplazaRelativamente(0, (int) (deltaTime * 0.25));
 			pieza1.desplazaRelativamente(0, 12);
 			pieza2.desplazaRelativamente(0, 12);
 			pieza3.desplazaRelativamente(0, 12);

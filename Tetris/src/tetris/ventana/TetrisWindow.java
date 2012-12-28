@@ -8,7 +8,6 @@ import javax.swing.JSplitPane;
 
 import tetris.paneles.DataPanel;
 import tetris.paneles.TetrisLienzo;
-import tetris.paneles.TetrisPanel;
 
 /**
  * 
@@ -19,7 +18,7 @@ public class TetrisWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JSplitPane splitPane;
-	private TetrisPanel panelTetris;
+//	private TetrisPanel panelTetris;
 	private DataPanel panelData;
 	private TetrisLienzo lienzo;
 	
@@ -58,9 +57,9 @@ public class TetrisWindow extends JFrame {
 		this.setVisible(Boolean.TRUE);
 	}
 	
-	public TetrisPanel getTetrisPanel() {
-		return panelTetris;
-	}
+//	public TetrisPanel getTetrisPanel() {
+//		return panelTetris;
+//	}
 	
 	public TetrisLienzo getTetrisLienzo() {
 		return lienzo;
