@@ -55,10 +55,26 @@ private static final long serialVersionUID = 1L;
 //		update();
 	}
 	
+	@Override
+	public void update(Graphics g) {
+		background(g);
+		
+		pieza.pinta(g);
+		pieza1.pinta(g);
+		pieza2.pinta(g);
+		pieza3.pinta(g);
+		pieza4.pinta(g);
+		pieza5.pinta(g);
+		
+		if (ventana.getDataPanel() != null && data == null) {
+			data = ventana.getDataPanel();
+		}
+	}
+	
 	public void update(int deltaTime) {
 		if (pieza.getPosY() < ventana.getHeight()) {
 //			Random random = new Random();
-//			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].p;
+//			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].getPieza();
 //			pieza.desplaza(pieza.getPosX(), 12);
 //		} else {
 			System.out.println(deltaTime);
@@ -96,7 +112,11 @@ private static final long serialVersionUID = 1L;
 		BARRA(new Barra()),
 		;
 		
-		Pieza p;
+		private Pieza p;
+		
+		public Pieza getPieza() {
+			return p;
+		}
 		
 		Piezas(Pieza p) {
 			this.p = p;
