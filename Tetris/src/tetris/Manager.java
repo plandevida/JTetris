@@ -1,5 +1,7 @@
 package tetris;
 
+import java.lang.Thread;
+
 /**
  * Esta clase es la clase principal que ejecuta el juego.
  * 
@@ -9,18 +11,19 @@ package tetris;
 public class Manager {
 	
 	// Instancia del juego, que contiene toda
-	// la lógica del hilo, actualización, etc...
-	private Tetris tetris;
+	// la lï¿½gica del hilo, actualizaciï¿½n, etc...
+        private Thread hilo;
 	
 	public Manager() {
-		tetris = new Tetris();
+		Tetris tetris = new Tetris();
+                hilo = new Thread(tetris);
 	}
 	
 	/**
-	 * Ejecuta el hilo principal y único del juego.
+	 * Ejecuta el hilo principal y ï¿½nico del juego.
 	 */
 	public void ejecutar() {
-		tetris.run();
+		hilo.start();
 	}
 
 	/**
