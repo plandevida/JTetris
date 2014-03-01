@@ -1,8 +1,31 @@
 package tetris.paneles;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.Image;
+import java.awt.Paint;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.RenderingHints.Key;
+import java.awt.font.FontRenderContext;
+import java.awt.font.GlyphVector;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.awt.image.ImageObserver;
+import java.awt.image.RenderedImage;
+import java.awt.image.renderable.RenderableImage;
+import java.text.AttributedCharacterIterator;
+import java.util.Map;
 
 import tetris.piezas.Pieza;
 import tetris.piezas.fichas.Barra;
@@ -19,6 +42,7 @@ private static final long serialVersionUID = 1L;
 	
 	private TetrisWindow ventana;
 	private DataPanel data;
+	private long lastMovement;
 	
 	public TetrisLienzo(TetrisWindow ventana) {
 		initUI(ventana);
@@ -28,63 +52,46 @@ private static final long serialVersionUID = 1L;
 		this.ventana = ventana;
 		setPreferredSize(new Dimension(this.ventana.getWidth()/2, this.ventana.getHeight()/2));
 		setIgnoreRepaint(true);
+		lastMovement = 0;
 	}
 	
-	Pieza pieza = new Barra();
-	Pieza pieza1 = new Cubo();
-	Pieza pieza2 = new EleD();
-	Pieza pieza3 = new EleI();
-	Pieza pieza4 = new EscalonD();
-	Pieza pieza5 = new EscalonI();
+	Pieza[] piezas = { new Barra(), new Cubo(), new EleD(), new EleI(), new EscalonD(), new EscalonI()};
 	
 	@Override
 	public void paint(Graphics g) {
 		background(g);
 		
-		pieza.pinta(g);
-		pieza1.pinta(g);
-		pieza2.pinta(g);
-		pieza3.pinta(g);
-		pieza4.pinta(g);
-		pieza5.pinta(g);
+//		for ( int i = 0; i < piezas.length; i++) {
+			
+			Pieza pieza = piezas[0];
+			
+			pieza.pinta(g);
+//		}
 		
-		if (ventana.getDataPanel() != null && data == null) {
-			data = ventana.getDataPanel();
-		}
-		
-//		update();
+//		if (ventana.getDataPanel() != null && data == null) {
+//			data = ventana.getDataPanel();
+//		}
 	}
 	
-	@Override
-	public void update(Graphics g) {
-		background(g);
-		
-		pieza.pinta(g);
-		pieza1.pinta(g);
-		pieza2.pinta(g);
-		pieza3.pinta(g);
-		pieza4.pinta(g);
-		pieza5.pinta(g);
-		
-		if (ventana.getDataPanel() != null && data == null) {
-			data = ventana.getDataPanel();
-		}
-	}
+//	@Override
+//	public void update(Graphics g) {
+//
+//		paint(getGraphics());
+//	}
 	
 	public void update(int deltaTime) {
-		if (pieza.getPosY() < ventana.getHeight()) {
-//			Random random = new Random();
-//			pieza = Piezas.values()[random.nextInt(Piezas.values().length-1)].getPieza();
-//			pieza.desplaza(pieza.getPosX(), 12);
-//		} else {
-			System.out.println(deltaTime);
-			System.out.println(deltaTime * 0.25);
-			pieza.desplazaRelativamente(0, (int) (deltaTime * 0.25));
-			pieza1.desplazaRelativamente(0, 12);
-			pieza2.desplazaRelativamente(0, 12);
-			pieza3.desplazaRelativamente(0, 12);
-			pieza4.desplazaRelativamente(0, 12);
-			pieza5.desplazaRelativamente(0, 12);
+		
+		long milliseconds = System.currentTimeMillis();
+		
+		if ( milliseconds - lastMovement > 300) {
+        	
+        	for ( int i = 0; i< piezas.length; i++) {
+        		repaint(piezas[i].getPosX(), piezas[i].getPosY(), 12*3, 12*4);
+        		piezas[i].desplazaRelativamente(0, 12);
+        		repaint(piezas[i].getPosX(), piezas[i].getPosY(), 12*3, 12*4);
+        	}
+        	
+        	lastMovement = milliseconds;
 		}
 	}
 	

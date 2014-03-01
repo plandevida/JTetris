@@ -13,15 +13,18 @@ import utilidades.ColorsEnum;
  * @author nano
  *
  */
-public abstract class Pieza extends PiezaPrimitiva{
+public abstract class Pieza extends PiezaPrimitiva {
 	protected final int filas = 4, columnas = 3;
 	protected int x, y;
 	
 	protected Cubito forma[][] = new Cubito[filas][columnas];
+	protected Color color;
 	
-	Random random = new Random();
-	int colorIndex = random.nextInt(ColorsEnum.values().length);
-	protected Color color = ColorsEnum.getColorIndex(colorIndex);
+	public Pieza() {
+    	Random random = new Random();
+    	int colorIndex = random.nextInt(ColorsEnum.values().length);
+    	color = ColorsEnum.getColorIndex(colorIndex);
+	}
 	
 	protected abstract void crearForma();
 	
@@ -64,8 +67,10 @@ public abstract class Pieza extends PiezaPrimitiva{
 		 */
 		for (int i=0; i < this.filas; i++) {
 			for (int j=0; j < this.columnas; j++) {
-				if (forma[i][j] != null) {
-					forma[i][j].pinta(g);
+				
+				Cubito cubito = forma[i][j];
+				if (cubito != null) {
+					cubito.pinta(g);
 				}
 			}
 		}

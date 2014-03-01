@@ -35,7 +35,7 @@ public class Tetris implements Runnable {
 
 			beginLoopTime = System.nanoTime();
 			
-			tetris.getTetrisLienzo().repaint();
+			tetris.getTetrisLienzo().paint(tetris.getTetrisLienzo().getGraphics());;
 			
 			lastUpdateTime = currentUpdateTime;
 			currentUpdateTime = System.nanoTime();
